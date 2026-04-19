@@ -43,10 +43,33 @@ A successful run concludes with:
 *   `src/relay.cpp`: The entry point of the cycle.
 *   `src/test.sh`: The automated validation suite.
 
-## Requirements
+## How to Run
 
+The project uses a `Makefile` to manage the complex execution pipeline.
+
+### 1. Requirements
+Ensure you have the following installed:
 *   `g++` / `gcc`
 *   `python3`
 *   `nasm`
 *   `ld` (binutils)
-*   A Linux environment (for x86_64 syscall compatibility)
+*   A Linux environment (for x86_64 syscalls)
+
+### 2. Execute the Relay
+To initialize the first stage and run the full 5-language cycle, simply execute:
+```bash
+make
+```
+This will build the builder, generate the initial C++ source, and run the automated test script.
+
+### 3. Verification Only
+If the first stage (`src/relay.cpp`) already exists and you simply want to verify the cycle again:
+```bash
+make test
+```
+
+### 4. Cleanup
+To remove all intermediate binaries and generated source files:
+```bash
+make clean
+```
